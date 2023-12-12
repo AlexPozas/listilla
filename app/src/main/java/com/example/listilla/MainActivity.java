@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Model: Record (intents=puntuació, nom)
+   
     class Record {
         public int intents;
         public String nom;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             img = _img;
         }
     }
-    // Model = Taula de records: utilitzem ArrayList
+   
     ArrayList<Record> records;
 
     // Numeros aleatorios
@@ -48,42 +48,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializamos los arrays de nombres, de apellidos y fotos
+       
         apellidos[0] = "Fernandez";
         apellidos[1] = "Alvarez";
-        apellidos[2] = "Jimenez";
+        apellidos[2] = "Garcia";
         apellidos[3] = "Sanchez";
         apellidos[4] = "Gonzalez";
         apellidos[5] = "Perez";
-        apellidos[6] = "Rodriguez";
+        apellidos[6] = "Pozas";
 
-        nombres[0] = "Gean";
-        nombres[1] = "Geanfranco";
+        nombres[0] = "Marc";
+        nombres[1] = "Paula";
         nombres[2] = "Alex";
-        nombres[3] = "Anfra";
+        nombres[3] = "Lorena";
         nombres[4] = "Edu";
         nombres[5] = "Roberto";
-        nombres[6] = "Ean";
+        nombres[6] = "Ivan";
 
         fotos[0] = "rio";
         fotos[1] = "logo";
         fotos[2] = "tree";
         fotos[3] = "girasoles";
 
-        // Inicialitzem model
+        
         records = new ArrayList<Record>();
         // Afegim alguns exemples
         records.add( new Record(33,"Marcos", "rio") );
         records.add( new Record(12,"Alex", "logo") );
         records.add( new Record(42,"Laura", "tree") );
 
-        // Inicialitzem l'ArrayAdapter amb el layout pertinent
+        
         adapter = new ArrayAdapter<Record>( this, R.layout.list_item, records )
         {
             @Override
             public View getView(int pos, View convertView, ViewGroup container)
             {
-                // getView ens construeix el layout i hi "pinta" els valors de l'element en la posició pos
+                
                 if( convertView==null ) {
                     // inicialitzem l'element la View amb el seu layout
                     convertView = getLayoutInflater().inflate(R.layout.list_item, container, false);
@@ -91,14 +91,21 @@ public class MainActivity extends AppCompatActivity {
 
                 ((TextView) convertView.findViewById(R.id.nom)).setText(getItem(pos).nom);
                 ((TextView) convertView.findViewById(R.id.intents)).setText(Integer.toString(getItem(pos).intents));
+                
                 if (getItem(pos).img.equals("rio")) {
+
                     ((ImageView) convertView.findViewById(R.id.fotoPerfil)).setImageResource(R.drawable.rio);
+
                 } else if (getItem(pos).img.equals("logo")) {
+
                     ((ImageView) convertView.findViewById(R.id.fotoPerfil)).setImageResource(R.drawable.descarga);
+
                 } else if (getItem(pos).img.equals("tree")) {
+
                     ((ImageView) convertView.findViewById(R.id.fotoPerfil)).setImageResource(R.drawable.tree);
                 }
                 else if (getItem(pos).img.equals("girasoles")) {
+
                     ((ImageView) convertView.findViewById(R.id.fotoPerfil)).setImageResource(R.drawable.girasoles);
                 }
 
